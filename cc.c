@@ -21,11 +21,10 @@ int main(int argc,char *argv[])
   char buffer[1024];
   while(1)
   {
-   // sprintf(buffer,"Hello!");//向buffer中写入要发送的字符串
     fgets(buffer,1024,stdin);
     send(sockfd,buffer,strlen(buffer),0);
     printf("发送：%s\n",buffer);
-    memset(buffer,0,sizeof(buffer));//这里也是要初始化一下，不然会打印okllo（总之暴力处理一下strcpy函数）
+    memset(buffer,0,sizeof(buffer));
     recv(sockfd,buffer,sizeof(buffer),0);
     printf("接收：%s\n",buffer);
   }
